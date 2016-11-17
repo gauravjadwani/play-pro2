@@ -37,6 +37,7 @@
       <li><a href="../views/dashboard.php"><span class="glyphicon glyphicon-user"></span><?php echo $name; ?></a></li>
       
     <li><a href="addtask.php"><span class="glyphicon glyphicon-log-in"></span> ADD_TASK</a></li>
+    <li><a href="../views/user_projects.php"><span class="glyphicon glyphicon-log-in"></span>VIEW PROJECTS</a></li>
     <li><a href="../views/view_as_date.php"><span class="glyphicon glyphicon-log-in"></span>VIEW TASK BY DATE</a></li>
     
         
@@ -87,7 +88,7 @@
                 
                 <select class="form-control" name="project_id">
       
-      <option  selected value='default'> -- select a project -- </option>
+      
       
       
       <?php
@@ -106,14 +107,14 @@ foreach($emails as $c2)
 if($c2==$email)
 {   
                  
-                 
+     $project_details=$r->hvals('project:'.$p_id);            
   //echo var_dump($c2);         
             // */   
     
  ?>
  
        
-      <option value="<?php echo $p_id;?>"><?php echo "the project is :".$p_id;?></option>
+      <option value="<?php echo $p_id;?>"><?php echo "the project name is :".$project_details[0];?></option>
   
       
       <?php

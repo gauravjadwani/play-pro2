@@ -9,8 +9,8 @@
 
 
 
-include_once '../controllers/connection.php';
-include_once '../controllers/init_session.php';
+//include_once '../controllers/connection.php';
+//include_once '../controllers/init_session.php';
 
 $task_list=$r->zrange("tasks_associated_by_self:".$email,0,-1);
 //echo var_dump($task_list);

@@ -39,9 +39,9 @@
    
     
     $r->setnx('task_id',1);
-    $r->setnx('self_id',1);
+    //$r->setnx('self_id',1);
     $task_id=$r->get('task_id');
-    $self_id=$r->get('self_id');
+    //$self_id=$r->get('self_id');
     $current_date= date("Y/m/d");
     //$time=time();
     
@@ -50,14 +50,14 @@
      
      
    //$r->zadd("permissions".$task_id,,$task);
-     $r->zadd("permissions:".$task_id,'1',$email);
+     //$r->zadd("permissions:".$task_id,'1',$email);
         //$r->sadd("notifications:".$email,$task_id);
-     $r->sadd("tasks:".$email,$task_id);
+     //$r->sadd("tasks:".$email,$task_id);
      
      $r->zadd("tasks_associated_by_self:".$email,$priority,$task_id);
      
-      $r->zadd("permissions:".$task_id,'1',$email);
-    if(!empty($_POST['permissionsM']))
+      //$r->zadd("permissions:".$task_id,'1',$email);
+    if(false)
 {
 // 'connection.php';
 $val =$_POST['permissionsM'];
@@ -78,7 +78,7 @@ $iparr=split(",",$val);
     
     }
 }
-   if(!empty($_POST['permissionsR']))
+   if(FALSE)
 {
 // 'connection.php';
 $vall =$_POST['permissionsR'];
@@ -110,7 +110,7 @@ $ipar= split(",",$vall);
 ///if($check==1)
         //echo "inserted";
 
-
+header('Location: ../views/add_task.php');
 
 }
 

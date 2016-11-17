@@ -31,7 +31,6 @@ include_once '../controllers/init_session.php';
       
     <li><a href="add_task.php"><span class="glyphicon glyphicon-log-in"></span> ADD_TASK</a></li>
     <li><a href="../views/add_project.php"><span class="glyphicon glyphicon-log-in"></span>ADD PROJECT</a></li>
-    <li><a href="../views/user_project.php"><span class="glyphicon glyphicon-log-in"></span>VIEW PROJECTS</a></li>
     <li><a href="view_as_date.php"><span class="glyphicon glyphicon-log-in"></span>VIEW TASK AS DATE</a></li>
         
     <li><a href="../controllers/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
@@ -44,53 +43,55 @@ include_once '../controllers/init_session.php';
   
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <ul class="list-group">
-            <h2>NOTIFICATIONS</h2>
-            <hr>
-                <?php
-                 
-               // include 'notifications.php';
-                
-                ?>
-                </ul>
-            </div>
-            
-        <div class="col-md-4">
-            <div class="row">
-                
-                
-                    <h2>PENDING SELF TASKS</h2>
-                    <hr>
-                   
-               
-                    
+        
   
-  <ul class="list-group">
-
-            <?php
-            //if(!empty($_POST['date']))
-            require_once 'display_tasks_self.php';
-            ?>
-      </ul>
+  <h2>VIEW YOUR PROJECTS </h2>
+  
+  <div class="table-responsive">
+  <table class="table">
       
-         
-                 
+    <thead>
+      <tr>
+        <th>NAME</th>
+        <th>CREATED ON</th>
+        <th>DESCRIPTION</th>
+        <th>DEADLINE</th>
+        <th>STATUS</th>
+        <th>Country</th>
+      </tr>
+    </thead>
+    <tbody>
+        <?PHP
+      $project_list=$r->sMembers('projects:'.$email);
+      
+      foreach($project_list as $pro)
+      {
+          
+      $project_details=$r->hvals('project:'.$pro);
+      ?>
+      <tr>
+        <td><?php echo $project_details[0];?></td>
+        <td><?php echo $project_details[1];?></td>
+        <td><?php echo $project_details[2];?></td>
+        <td><?php echo $project_details[3];?></td>
+        <td><?php echo $project_details[4];?></td>
+        <td>USA</td>
+      </tr>
+      
+      <?php
+      }?>
+      
+      
+    </tbody>
+  </table>
+  </div>
 </div>
+
+
+    
+    
+    </div>
         </div>
-        <div class="col-md-4">
-            <ul class="list-group">
-            <h2>PENDING PROJECT</h2>
-            <hr>
-                <?php
-                 
-    require_once  'dispaly_pending_projects.php';
-                
-                ?>
-                </ul>
-            </div>
-    </div>
-    </div>
 
 </body>
 </html>

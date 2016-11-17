@@ -37,7 +37,9 @@
       <li><a href="../views/dashboard.php"><span class="glyphicon glyphicon-user"></span><?php echo $name; ?></a></li>
       
     <li><a href="addtask.php"><span class="glyphicon glyphicon-log-in"></span> ADD_TASK</a></li>
+    <li><a href="../views/user_projects.php"><span class="glyphicon glyphicon-log-in"></span>VIEW PROJECTS</a></li>
     <li><a href="../views/view_as_date.php"><span class="glyphicon glyphicon-log-in"></span>VIEW TASK BY DATE</a></li>
+    
     
         
     <li><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
@@ -111,6 +113,8 @@
               </div>
             </div>&nbsp
             <hr>
+             <?php
+                 /*
                  <div class="row">
                         <div class = "form-group">
       <label for = "permissionsM" class = "col-md-2 control-label" style="font-size: 20px"> MOdify</label>
@@ -124,6 +128,7 @@
               </div>
             </div>
             &nbsp
+       
              <div class="row">
                         <div class = "form-group">
       <label for = "permissionsRs" class = "col-md-2 control-label" style="font-size: 20px">Read-only</label>
@@ -136,6 +141,7 @@
    
               </div>
             </div>
+            */?>
                 <div class="row">
                     <div class="col-md-2">
                         

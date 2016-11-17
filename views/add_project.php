@@ -28,11 +28,13 @@ include '../controllers/init_session.php';
       
     <ul class="nav navbar-nav navbar-right">
       
-      <li><a href="notifications.php"><span class="glyphicon glyphicon-user"></span><?php     echo $name; ?></a></li>
+      <li><a href="../views/dashboard.php"><span class="glyphicon glyphicon-user"></span><?php     echo $name; ?></a></li>
       
-    <li><a href="../controllers/add_task.php"><span class="glyphicon glyphicon-log-in"></span> ADD_TASK</a></li>
-   <li><a href="../controllers/add_task_project.php"><span class="glyphicon glyphicon-log-in"></span> ADD TASK PROJECT </a></li>
-    <li><a href="view_as_date.php"><span class="glyphicon glyphicon-log-in"></span>VIEW TASK AS DATE</a></li>
+    <li><a href="../views/add_task.php"><span class="glyphicon glyphicon-log-in"></span> ADD_TASK</a></li>
+    
+  <li><a href="../views/add_project.php"><span class="glyphicon glyphicon-log-in"></span> ADD PROJECT</a></li>
+  <li><a href="../views/user_projects.php"><span class="glyphicon glyphicon-log-in"></span>VIEW PROJECTS</a></li>
+    <li><a href=""><span class="glyphicon glyphicon-log-in"></span>VIEW TASK AS DATE</a></li>
         
     <li><a href="../controllers/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
     
@@ -117,12 +119,12 @@ include '../controllers/init_session.php';
 foreach($projects as $p_id)
     {
     $projects_groupid=$r->hget('project:'.$p_id,'associated_group');
-$emails=$r->zrangebyscore('group_permissions:'.$projects_groupid,'1','1');
+$emails=$r->zrangebyscore('group_permissions:'.$projects_groupid,'1','2');
 foreach($emails as $c2)
 {
 if($c2==$email)
 {   
-                 
+         $group_details=$r->hvals('group:'.$projects_groupid);       
                  
   //echo var_dump($c2);         
             // */   
@@ -130,7 +132,7 @@ if($c2==$email)
  ?>
  
        
-      <option><?php echo "the group is is :".$projects_groupid;?></option>
+      <option><?php echo "the group name is :".$group_details[0];?></option>
   
       
       <?php

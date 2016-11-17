@@ -106,7 +106,7 @@ $ipar= split(",",$vall);
 
 }
 
-
+header('Location: ../views/addtask_toproject.php');
         
         
         

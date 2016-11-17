@@ -24,16 +24,17 @@ include_once '../controllers/init_session.php';
     $current_date= date("Y/m/d");
     //$time=time();
     
-    
+     $r->sadd("projects:".$email,$project_id);
    if($form_group_id=='default') 
    {
+       //echo 'l';
     $r->hMset('group:'.$group_id, array('name' => $name_group,'created_on'=>$date,'status'=>'live'));
    $r->zadd("group_permissions:".$group_id,'1',$email);
-   $r->sadd("projects:".$email,$project_id);
+ 
     
    
     
-    $r->hMset('project:'.$project_id, array('name' => $name_project,'created_on'=>$date,'description'=>$decription,'status'=>'pending','associated_group'=>$group_id));
+    $r->hMset('project:'.$project_id, array('name' => $name_project,'created_on'=>$current_date,'description'=>$decription,'deadline'=>$date,'status'=>'pending','associated_group'=>$group_id));
     echo $group_id."<br>"; 
     $r->sadd("projects_group:".$group_id,$project_id);
     
@@ -105,7 +106,7 @@ echo 'list_modify:'.$split_email[$i].'<br>';
     
    
     
-    $r->hMset('project:'.$project_id, array('name' => $name_project,'created_on'=>$date,'description'=>$decription,'status'=>'pending','associated_group'=>$form_group_id));
+     $r->hMset('project:'.$project_id, array('name' => $name_project,'created_on'=>$current_date,'description'=>$decription,'deadline'=>$date,'status'=>'pending','associated_group'=>$form_group_id));
     echo 'from_group:'.$form_group_id.'<br>'; 
     $r->sadd("projects_group:".$form_group_id,$project_id);
     
@@ -166,6 +167,7 @@ for($i=0;$i<sizeof($split_email);$i++)
 
     }
 }
+header('Location: ../views/add_project.php');
 
 
         
