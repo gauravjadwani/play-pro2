@@ -29,12 +29,13 @@ include_once '../controllers/init_session.php';
    {
     $r->hMset('group:'.$group_id, array('name' => $name_group,'created_on'=>$date,'status'=>'live'));
    $r->zadd("group_permissions:".$group_id,'1',$email);
+   $r->sadd("projects:".$email,$project_id);
     
    
     
     $r->hMset('project:'.$project_id, array('name' => $name_project,'created_on'=>$date,'description'=>$decription,'status'=>'pending','associated_group'=>$group_id));
     echo $group_id."<br>"; 
-    $r->sadd("projects:".$group_id,$project_id);
+    $r->sadd("projects_group:".$group_id,$project_id);
     
     $list_modify=$_POST['list_members_modify'];
     $list_readonly=$_POST['list_members_readonly'];
@@ -106,7 +107,7 @@ echo 'list_modify:'.$split_email[$i].'<br>';
     
     $r->hMset('project:'.$project_id, array('name' => $name_project,'created_on'=>$date,'description'=>$decription,'status'=>'pending','associated_group'=>$form_group_id));
     echo 'from_group:'.$form_group_id.'<br>'; 
-    $r->sadd("projects:".$form_group_id,$project_id);
+    $r->sadd("projects_group:".$form_group_id,$project_id);
     
     $list_modify=$_POST['list_members_modify'];
     $list_readonly=$_POST['list_members_readonly'];

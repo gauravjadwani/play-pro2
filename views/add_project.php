@@ -98,14 +98,61 @@ include '../controllers/init_session.php';
                  <div class='col-md-2'>
   <label for="sel1">Select Group:</label>
   </div>
+                 
+                 
+              
+                 
                  <div class='col-md-10'>
-  <select class="form-control" name="group_id">
+                       <select class="form-control" name="group_id">
+      
       <option  selected value='default'> -- select a group -- </option>
+       
+                     <?php
+                // echo "guarav";
+                      
+        $projects=$r->smembers('projects:'.$email);
+       
+
+ //echo "fdfd".var_dump($projects);   
+foreach($projects as $p_id)
+    {
+    $projects_groupid=$r->hget('project:'.$p_id,'associated_group');
+$emails=$r->zrangebyscore('group_permissions:'.$projects_groupid,'1','1');
+foreach($emails as $c2)
+{
+if($c2==$email)
+{   
+                 
+                 
+  //echo var_dump($c2);         
+            // */   
+    
+ ?>
+
+       
+      <option><?php echo "the group is is :".$projects_groupid;?></option>
+  
+      
+      <?php
+      
+}
+}
+    }
+       
+       
+      ?>
+      
+  
     
     </select>
         
           </div>
           
+                 
+                 
+             
+                 
+                 
       </div>
             
                 
