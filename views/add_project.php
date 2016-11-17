@@ -103,11 +103,11 @@ include '../controllers/init_session.php';
               
                  
                  <div class='col-md-10'>
-                       <select class="form-control" name="group_id">
+                      <select class="form-control" name="group_id">
       
       <option  selected value='default'> -- select a group -- </option>
-       
-                     <?php
+      
+                      <?php
                 // echo "guarav";
                       
         $projects=$r->smembers('projects:'.$email);
@@ -128,7 +128,7 @@ if($c2==$email)
             // */   
     
  ?>
-
+ 
        
       <option><?php echo "the group is is :".$projects_groupid;?></option>
   

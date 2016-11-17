@@ -22,14 +22,14 @@ include_once '../controllers/init_session.php';
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">play-BETA</a>
-    </div   >
+    </div>
       
       
     <ul class="nav navbar-nav navbar-right">
       
       <li><a href="notifications.php"><span class="glyphicon glyphicon-user"></span><?php echo $name; ?></a></li>
       
-    <li><a href="../controllers/add_task.php"><span class="glyphicon glyphicon-log-in"></span> ADD_TASK</a></li>
+    <li><a href="add_task.php"><span class="glyphicon glyphicon-log-in"></span> ADD_TASK</a></li>
     <li><a href="../views/add_project.php"><span class="glyphicon glyphicon-log-in"></span>ADD PROJECT</a></li>
     <li><a href="view_as_date.php"><span class="glyphicon glyphicon-log-in"></span>VIEW TASK AS DATE</a></li>
         
@@ -43,9 +43,9 @@ include_once '../controllers/init_session.php';
   
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <ul class="list-group">
-            <h1>NOTIFICATIONS</h1>
+            <h2>NOTIFICATIONS</h2>
             <hr>
                 <?php
                  
@@ -55,30 +55,39 @@ include_once '../controllers/init_session.php';
                 </ul>
             </div>
             
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="row">
-                <div class="col-md-3">
-                    
-                </div>
-                <div class="col-md-9">
-                    <h1>ON BOARD TASKS</h1>
+                
+                
+                    <h2>PENDING SELF TASKS</h2>
                     <hr>
                    
-                <div class="col-md-12">
+               
                     
   
   <ul class="list-group">
 
             <?php
             //if(!empty($_POST['date']))
-            //require_once 'view_task.php';
+            require_once 'display_tasks_self.php';
             ?>
       </ul>
-                 </div>     
-            </div>
+      
+         
                  
 </div>
         </div>
+        <div class="col-md-4">
+            <ul class="list-group">
+            <h2>PENDING PROJECT</h2>
+            <hr>
+                <?php
+                 
+               // include 'notifications.php';
+                
+                ?>
+                </ul>
+            </div>
     </div>
     </div>
 
