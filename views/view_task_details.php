@@ -6,6 +6,7 @@ include '../controllers/connection.php';
 
 if(isset($_REQUEST['task_id']))
 {
+    //echo $_REQUEST['task_id'];
 $task=$_REQUEST['task_id'];
 $hash=$r->hvals('tasks:'.$task);
 //foreach($hash as $i)

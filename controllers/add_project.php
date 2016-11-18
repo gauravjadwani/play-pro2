@@ -25,7 +25,9 @@ include_once '../controllers/init_session.php';
     $current_time=time();
     //$time=time();
     
+    
      $r->sadd("projects:".$email,$project_id);
+      $r->zadd("notifications:".$email,$current_time,"you added the project ".$name_project);
    if($form_group_id=='default') 
    {
        //echo 'l';
@@ -37,7 +39,7 @@ include_once '../controllers/init_session.php';
    
     
     $r->hMset('project:'.$project_id, array('name' => $name_project,'created_on'=>$current_date,'description'=>$decription,'deadline'=>$date,'status'=>'pending','associated_group'=>$group_id));
-    $r->zadd("notifications:".$email,$current_time,"you added the project ".$name_project);
+   
     echo $group_id."<br>"; 
     $r->sadd("projects_group:".$group_id,$project_id);
     

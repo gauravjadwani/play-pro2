@@ -58,7 +58,9 @@ include_once '../controllers/init_session.php';
         <th>DEADLINE</th>
         <th>STATUS</th>
         <th>ASSOCIATED GROUP</th>
+        
         <th>ASSOCIATED GROUP STATUS</th>
+        <th>ASSOCIATED TASK</th>
       </tr>
     </thead>
     <tbody>
@@ -81,7 +83,23 @@ include_once '../controllers/init_session.php';
         <td><?php echo $project_details[4];?></td>
         <td><?php echo $group_details[0];?></td>
         <td><?php echo $group_details[2];?></td>
-          </tr>
+        <td><?php
+        
+        $tasks=$r->zrange('tasks_associated_by_project:'.$pro,0,-1);
+        
+        foreach ($tasks as $t)
+        {
+            
+        $task_details=$r->hvals('tasks:'.$t);
+        
+        //echo var_dump($task_details);
+        ?>
+        
+            <a href="http://localhost/play-pro2/views/view_task_details.php?task_id=<?php echo $t.'">'; echo $task_details[0]." priority: ".$task_details[1]."<br>";?></a><br>
+       
+        
+        <?php }?>
+          </td></tr>
       
       <?php
       }?>

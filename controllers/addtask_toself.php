@@ -42,7 +42,7 @@
     //$r->setnx('self_id',1);
     $task_id=$r->get('task_id');
     //$self_id=$r->get('self_id');
-    $current_date= date("Y/m/d");
+    $current_date=time();
     //$time=time();
     
     

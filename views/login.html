@@ -42,14 +42,14 @@
       <label for = "email" class = "col-sm-2 control-label">Email</label>
 		
       <div class = "col-sm-10">
-         <input type = "email" class = "form-control" name = "email" placeholder ="Enter Email">
+         <input type = "email" class = "form-control" name = "email" placeholder ="Enter Email" required>
       </div>
    </div>
    <div class = "form-group">
       <label for = "passwd" class = "col-sm-2 control-label">Password</label>
 		
       <div class = "col-sm-10">
-         <input type = "password" class = "form-control" name = "passwd" placeholder ="Enter Password">
+         <input type = "password" class = "form-control" name = "passwd" placeholder ="Enter Password" required>
       </div>
    </div>
      <div class = "form-group">
