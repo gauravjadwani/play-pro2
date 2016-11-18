@@ -50,7 +50,7 @@ include_once '../controllers/init_session.php';
             <hr>
                 <?php
                  
-               // include 'notifications.php';
+              include 'notifications.php';
                 
                 ?>
                 </ul>

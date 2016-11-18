@@ -22,6 +22,7 @@ include_once '../controllers/init_session.php';
     $group_id=$r->get('group_id');
     $project_id=$r->get('project_id');
     $current_date= date("Y/m/d");
+    $current_time=time();
     //$time=time();
     
      $r->sadd("projects:".$email,$project_id);
@@ -30,11 +31,13 @@ include_once '../controllers/init_session.php';
        //echo 'l';
     $r->hMset('group:'.$group_id, array('name' => $name_group,'created_on'=>$date,'status'=>'live'));
    $r->zadd("group_permissions:".$group_id,'1',$email);
+   $r->zadd("notifications:".$email,$current_time,"you added yourself as the group owner in the ".$name_group);
  
     
    
     
     $r->hMset('project:'.$project_id, array('name' => $name_project,'created_on'=>$current_date,'description'=>$decription,'deadline'=>$date,'status'=>'pending','associated_group'=>$group_id));
+    $r->zadd("notifications:".$email,$current_time,"you added the project ".$name_project);
     echo $group_id."<br>"; 
     $r->sadd("projects_group:".$group_id,$project_id);
     
@@ -58,7 +61,7 @@ for($i=0;$i<sizeof($split_email);$i++)
          
         
    $r->zadd("group_permissions:".$group_id,'2',$split_email[$i]);
- 
+ $r->zadd("notifications:".$split_email[$i],$current_time,"you have been added as the group modifier in the ".$name_group."by the ".$email);
      
      
      
@@ -83,6 +86,8 @@ for($i=0;$i<sizeof($split_email);$i++)
 $r->zadd("group_permissions:".$group_id,'3',$split_email[$i]);
 echo 'list_modify:'.$split_email[$i].'<br>';
  $r->sadd("projects:".$split_email[$i],$project_id); 
+ $r->zadd("notifications:".$split_email[$i],$current_time,"you have been added as the group reader in the ".$name_group."by the ".$email);
+ 
  
     
 }

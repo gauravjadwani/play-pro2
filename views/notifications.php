@@ -4,20 +4,20 @@
 <?php
 
 
-include '../controllers/connection.php';
-include_once '../controllers/init_session';
+//include '../controllers/connection.php';
+//include_once '../controllers/init_session';
 
 
-$check=$r->sMembers('notifications:'.$email);
+$check=$r->zrange('notifications:'.$email,0,-1);
 //echo $check;
 
 foreach($check as $c)
     {
 
-echo "<br>";
+echo "<li class='list-group-item list-group-item-danger'>".$c."</li>&nbsp";
 
- 
-
+    }
+/*
     $task_id=$c;
     $permission=$r->zscore('permissions:'.$task_id,$email);
     $task_name=$r->hget('tasks:'.$task_id,'name');
@@ -44,7 +44,7 @@ echo "<br>";
 
     }
    
-
+*/
    
 
 

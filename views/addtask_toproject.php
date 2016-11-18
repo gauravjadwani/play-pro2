@@ -163,32 +163,7 @@ if($c2==$email)
    
               </div>
             </div>&nbsp
-            <hr>
-                 <div class="row">
-                        <div class = "form-group">
-      <label for = "permissionsM" class = "col-md-2 control-label" style="font-size: 20px"> MOdify</label>
-		
-      <div class = "col-md-7">
-       <input type = "text" class = "form-control" name = "permissionsM" placeholder ="Enter email by sepration of ,">
-      </div>
-      <div class="col-sm-3">
-          </div>
-   
-              </div>
-            </div>
-            &nbsp
-             <div class="row">
-                        <div class = "form-group">
-      <label for = "permissionsRs" class = "col-md-2 control-label" style="font-size: 20px">Read-only</label>
-		
-      <div class = "col-md-7">
-       <input type = "text" class = "form-control" name = "permissionsR" placeholder ="Enter email by sepration of  ,">
-      </div>
-      <div class="col-sm-3">
-          </div>
-   
-              </div>
-            </div>
+            
                 <div class="row">
                     <div class="col-md-2">
                         

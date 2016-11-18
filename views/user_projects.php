@@ -57,7 +57,8 @@ include_once '../controllers/init_session.php';
         <th>DESCRIPTION</th>
         <th>DEADLINE</th>
         <th>STATUS</th>
-        <th>Country</th>
+        <th>ASSOCIATED GROUP</th>
+        <th>ASSOCIATED GROUP STATUS</th>
       </tr>
     </thead>
     <tbody>
@@ -68,6 +69,9 @@ include_once '../controllers/init_session.php';
       {
           
       $project_details=$r->hvals('project:'.$pro);
+      $group_id=$project_details[5];
+      $group_details=$r->hvals('group:'.$project_details[5]);
+      
       ?>
       <tr>
         <td><?php echo $project_details[0];?></td>
@@ -75,8 +79,9 @@ include_once '../controllers/init_session.php';
         <td><?php echo $project_details[2];?></td>
         <td><?php echo $project_details[3];?></td>
         <td><?php echo $project_details[4];?></td>
-        <td>USA</td>
-      </tr>
+        <td><?php echo $group_details[0];?></td>
+        <td><?php echo $group_details[2];?></td>
+          </tr>
       
       <?php
       }?>

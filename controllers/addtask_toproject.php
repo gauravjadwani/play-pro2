@@ -4,7 +4,7 @@
 
 
 
-        
+        $current_time=time();
         
         if(!empty($_POST['date'])&&!empty($_POST['task'])&&!empty($_POST['priority']))
 
@@ -18,6 +18,8 @@
     $task=$_POST['task'];
     $date=$_POST['date'];
     $project_id=$_POST['project_id'];
+   $project_details=$r->hvals("project:".$project_id);
+   
     
     /*
     if(isset($_POST['project_id']))
@@ -44,12 +46,14 @@
     $r->hMset('tasks:'.$task_id, array('name' => $task,'priority'=>$priority,'assinged_for'=>$date,'introduced_on'=>$current_date,'status'=>'pending','associated_project'=>$project_id));
      
      
-   //$r->zadd("permissions".$task_id,,$task);
-     $r->zadd("permissions:".$task_id,'1',$email);
+   $r->zadd("notifications:".$email,$current_time,"you added task name ".$task."to project ".$project_details[0]);
+     //$r->zadd("permissions:".$task_id,'1',$email);
         //$r->sadd("notifications:".$email,$task_id);
      $r->sadd("tasks:".$email,$task_id);
      $r->zadd("tasks_associated_by_project:".$project_id,$priority,$task_id);
      
+     if(false)
+     {
     if(!empty($_POST['permissionsM']))
 {
 // 'connection.php';
@@ -93,7 +97,7 @@ $ipar= split(",",$vall);
 }
 
 
-
+     }
 
 //$r->rpush("dates".$email,$date." ".$task_id);
     $r->incr('task_id');

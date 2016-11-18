@@ -24,7 +24,7 @@ foreach($task_list as $task)
        //echo $task;
       PRINT   "<a href='view_task_details.php?task_id=$task'>
           <li class='list-group-item list-group-item-success'>".$task_name."</li>
-              </a>";
+              </a>&nbsp";
   //echo var_dump($check_task);
     
 }
